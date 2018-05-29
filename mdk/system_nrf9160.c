@@ -20,7 +20,7 @@ NOTICE: This file has been modified by Nordic Semiconductor ASA.
 
 */
 
-/* NOTE: Template files (including this one) are application specific and therefore expected to 
+/* NOTE: Template files (including this one) are application specific and therefore expected to
    be copied into the application project folder prior to its use! */
 
 #include <stdint.h>
@@ -46,7 +46,7 @@ NOTICE: This file has been modified by Nordic Semiconductor ASA.
 #define TRACE_TRACEDATA3_PIN (25)
 
 #if defined ( __CC_ARM )
-    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK;  
+    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK;
 #elif defined ( __ICCARM__ )
     __root uint32_t SystemCoreClock = __SYSTEM_CLOCK;
 #elif defined ( __GNUC__ )
@@ -81,7 +81,7 @@ void SystemInit(void)
         #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
           SAU->CTRL |= (1 << SAU_CTRL_ALLNS_Pos);
         #endif
-        
+
         /* Workaround for Errata 6 "POWER: SLEEPENTER and SLEEPEXIT events asserted after pin reset" found at the Errata document
             for your device located at https://infocenter.nordicsemi.com/index.jsp  */
         if (nrf91_errata_6()){
@@ -193,7 +193,7 @@ void SystemInit(void)
             NRF_TAD_S->TRACEPORTSPEED = TAD_TRACEPORTSPEED_TRACEPORTSPEED_32MHz;
 
             *((uint32_t *)(0xE0053000ul)) = 0x00000001ul;
-            
+
             *((uint32_t *)(0xE005AFB0ul))  = 0xC5ACCE55ul;
             *((uint32_t *)(0xE005A000ul)) &= 0xFFFFFF00ul;
             *((uint32_t *)(0xE005A004ul))  = 0x00000009ul;
@@ -218,11 +218,11 @@ void SystemInit(void)
              */
         #endif
 
-        /* Allow Non-Secure code to run FPU instructions. 
+        /* Allow Non-Secure code to run FPU instructions.
          * If only the secure code should control FPU power state these registers should be configured accordingly in the secure application code. */
         SCB->NSACR |= (3UL << 10);
     #endif
-    
+
     /* Enable the FPU if the compiler used floating point unit instructions. __FPU_USED is a MACRO defined by the
     * compiler. Since the FPU consumes energy, remember to disable FPU use in the compiler if floating point unit
     * operations are not used in your code. */
@@ -231,7 +231,7 @@ void SystemInit(void)
       __DSB();
       __ISB();
     #endif
-    
+
     SystemCoreClockUpdate();
 }
 
@@ -245,8 +245,8 @@ void SystemInit(void)
         }
         return false;
     }
-    
-    
+
+
     bool uicr_HFXOSRC_erased()
     {
         if ((NRF_UICR_S->HFXOSRC & UICR_HFXOSRC_HFXOSRC_Msk) != UICR_HFXOSRC_HFXOSRC_TCXO) {

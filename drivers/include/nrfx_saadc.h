@@ -380,4 +380,3 @@ void nrfx_saadc_irq_handler(void);
 #endif
 
 #endif // NRFX_SAADC_H__
-

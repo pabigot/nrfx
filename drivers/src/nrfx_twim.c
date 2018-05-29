@@ -515,7 +515,7 @@ static nrfx_err_t twim_xfer(twim_control_block_t        * p_cb,
             p_twim->FREQUENCY = 0;
             nrf_twim_event_clear(p_twim, NRF_TWIM_EVENT_TXSTARTED);
             nrf_twim_int_enable(p_twim, NRF_TWIM_INT_TXSTARTED_MASK);
-        } 
+        }
         else
         {
             nrf_twim_frequency_set(p_twim, p_cb->bus_frequency);

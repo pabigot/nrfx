@@ -4,7 +4,7 @@
  * @{
  * @ingroup nrfx_spi
  */
-/** @brief 
+/** @brief
  *
  *  Set to 1 to activate.
  *

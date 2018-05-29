@@ -51,7 +51,7 @@ NOTICE: This file has been modified by Nordic Semiconductor ASA.
 #define TRACE_TRACEDATA3_PIN TAD_PSEL_TRACEDATA3_PIN_Tracedata3
 
 #if defined ( __CC_ARM )
-    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK_INITIAL;  
+    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK_INITIAL;
 #elif defined ( __ICCARM__ )
     __root uint32_t SystemCoreClock = __SYSTEM_CLOCK_INITIAL;
 #elif defined   ( __GNUC__ )
@@ -154,7 +154,7 @@ void SystemInit(void)
         {
             *((volatile uint32_t *)0x5000470Cul) =0x65ul;
         }
-        
+
         #if defined(CONFIG_NFCT_PINS_AS_GPIOS)
 
             if ((NRF_UICR_S->NFCPINS & UICR_NFCPINS_PROTECT_Msk) == (UICR_NFCPINS_PROTECT_NFC << UICR_NFCPINS_PROTECT_Pos))

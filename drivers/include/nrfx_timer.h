@@ -399,4 +399,3 @@ void nrfx_timer_4_irq_handler(void);
 #endif
 
 #endif // NRFX_TIMER_H__
-

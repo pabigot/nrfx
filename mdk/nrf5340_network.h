@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2010 - 2020, Nordic Semiconductor ASA All rights reserved.Redistribution and use in so
  * urce and binary forms, with or withoutmodification, are permitted provided that the following condit
- * ions are met:1. Redistributions of source code must retain the above copyright notice, this list of 
+ * ions are met:1. Redistributions of source code must retain the above copyright notice, this list of
  * conditions and the following disclaimer.2. Redistributions in binary form must reproduce the above c
  * opyright notice, this list of conditions and the following disclaimer in the documentation and/or ot
  * her materials provided with the distribution.3. Neither the name of Nordic Semiconductor ASA nor the

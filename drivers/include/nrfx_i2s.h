@@ -283,4 +283,3 @@ void nrfx_i2s_irq_handler(void);
 #endif
 
 #endif // NRFX_I2S_H__
-

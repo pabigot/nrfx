@@ -1,19 +1,19 @@
 ; Copyright (c) 2009-2020 ARM Limited. All rights reserved.
-; 
+;
 ;     SPDX-License-Identifier: Apache-2.0
-; 
+;
 ; Licensed under the Apache License, Version 2.0 (the License); you may
 ; not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
-; 
+;
 ;     www.apache.org/licenses/LICENSE-2.0
-; 
+;
 ; Unless required by applicable law or agreed to in writing, software
 ; distributed under the License is distributed on an AS IS BASIS, WITHOUT
 ; WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
-; 
+;
 ; NOTICE: This file has been modified by Nordic Semiconductor ASA.
 
 ; The modules in this file are included in the libraries, and may be replaced
@@ -37,7 +37,7 @@
         #ifndef __STARTUP_CONFIG_STACK_ALIGNEMENT
         #define __STARTUP_CONFIG_STACK_ALIGNEMENT 3
         #endif
-        
+
         SECTION CSTACK:DATA:NOROOT(__STARTUP_CONFIG_STACK_ALIGNEMENT)
         DS8 __STARTUP_CONFIG_STACK_SIZE
 
@@ -209,20 +209,20 @@ __Vectors_Size                      EQU   __Vectors_End - __Vectors
         PUBWEAK Reset_Handler
         SECTION .text:CODE:REORDER:NOROOT(2)
 Reset_Handler
-        /* Workaround for Errata 185 RAM: RAM corruption at extreme corners 
+        /* Workaround for Errata 185 RAM: RAM corruption at extreme corners
          * found at the Errata document for your device located
          * at https://infocenter.nordicsemi.com/index.jsp */
-        
+
         LDR     R0, =0x10000130
         LDR     R0, [R0]
         LDR     R1, =0x10000134
         LDR     R1, [R1]
-        
+
         CMP     R0, #0xA
         BNE     skip
         CMP     R1, #0x0
         BNE     skip
-        
+
         LDR     R0, =0x40000EE4
         LDR     R2, [R0]
         LDR     R3, =0xFFFFFF8F
@@ -230,7 +230,7 @@ Reset_Handler
         LDR     R3, =0x00000040
         ORRS    R2, R2, R3
         STR     R2, [R0]
-        
+
 skip
 
         LDR     R0, =SystemInit
@@ -425,5 +425,4 @@ PDM_IRQHandler
         B .
 
         END
-
 

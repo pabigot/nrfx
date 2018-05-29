@@ -302,4 +302,3 @@ NRF_STATIC_INLINE void nrf_ecb_publish_clear(NRF_ECB_Type *  p_reg,
 #endif
 
 #endif  // NRF_ECB_H__
-

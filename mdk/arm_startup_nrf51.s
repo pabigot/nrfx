@@ -1,19 +1,19 @@
 ; Copyright (c) 2009-2020 ARM Limited. All rights reserved.
-; 
+;
 ;     SPDX-License-Identifier: Apache-2.0
-; 
+;
 ; Licensed under the Apache License, Version 2.0 (the License); you may
 ; not use this file except in compliance with the License.
 ; You may obtain a copy of the License at
-; 
+;
 ;     www.apache.org/licenses/LICENSE-2.0
-; 
+;
 ; Unless required by applicable law or agreed to in writing, software
 ; distributed under the License is distributed on an AS IS BASIS, WITHOUT
 ; WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ; See the License for the specific language governing permissions and
 ; limitations under the License.
-; 
+;
 ; NOTICE: This file has been modified by Nordic Semiconductor ASA.
 
                 IF :DEF: __STARTUP_CONFIG
@@ -32,7 +32,7 @@ Stack_Size      EQU __STACK_SIZE
                 ELSE
 Stack_Size      EQU 2048
                 ENDIF
-                
+
                 IF :DEF: __STARTUP_CONFIG
 Stack_Align     EQU __STARTUP_CONFIG_STACK_ALIGNEMENT
                 ELSE
@@ -135,12 +135,12 @@ Reset_Handler   PROC
                 IMPORT  __main
 
                                 MOVS    R1, #NRF_POWER_RAMONx_RAMxON_ONMODE_Msk
-                
+
                 LDR     R0, =NRF_POWER_RAMON_ADDRESS
                 LDR     R2, [R0]
                 ORRS    R2, R2, R1
                 STR     R2, [R0]
-                
+
                 LDR     R0, =NRF_POWER_RAMONB_ADDRESS
                 LDR     R2, [R0]
                 ORRS    R2, R2, R1

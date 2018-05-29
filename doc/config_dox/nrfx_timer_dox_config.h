@@ -4,7 +4,7 @@
  * @{
  * @ingroup nrfx_timer
  */
-/** @brief 
+/** @brief
  *
  *  Set to 1 to activate.
  *
