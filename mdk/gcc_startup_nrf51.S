@@ -1,5 +1,5 @@
 /*
- 
+
 Copyright (c) 2009-2018 ARM Limited. All rights reserved.
 
     SPDX-License-Identifier: Apache-2.0
@@ -140,7 +140,7 @@ __isr_vector:
 Reset_Handler:
 
     MOVS    R1, #NRF_POWER_RAMONx_RAMxON_ONMODE_Msk
-    
+
     LDR     R0, =NRF_POWER_RAMON_ADDRESS
     LDR     R2, [R0]
     ORRS    R2, R1

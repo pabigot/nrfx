@@ -74,7 +74,7 @@ typedef enum
     NRFX_NFCT_ACTIVE_STATE_DEFAULT,                       ///< NFC Tag is either sleeping or idle, depending on the previous state before being selected by a poller.
 } nrfx_nfct_active_state_t;
 
-/** 
+/**
  * @brief NFCT driver event types, passed to the upper-layer callback function
  *        provided during the initialization.
  */
@@ -180,14 +180,14 @@ typedef struct
     } params;
 } nrfx_nfct_evt_t;
 
-/** 
+/**
  * @brief Callback descriptor to pass events from the NFCT driver to the upper layer.
  *
  * @param[in] p_event Pointer to the event descriptor.
  */
 typedef void (*nrfx_nfct_handler_t)(nrfx_nfct_evt_t const * p_event);
 
-/** 
+/**
  * @brief NFCT driver configuration structure.
  */
 typedef struct
@@ -196,7 +196,7 @@ typedef struct
     nrfx_nfct_handler_t cb;            ///< Callback.
 } nrfx_nfct_config_t;
 
-/** 
+/**
  * @brief Function for initializing the NFCT driver.
  *
  * @param[in] p_config  Pointer to the NFCT driver configuration structure.
@@ -236,14 +236,14 @@ void nrfx_nfct_disable(void);
  */
 bool nrfx_nfct_field_check(void);
 
-/** 
+/**
  * @brief Function for preparing the NFCT driver for receiving an NFC frame.
  *
  * @param[in] p_rx_data  Pointer to the RX buffer.
  */
 void nrfx_nfct_rx(nrfx_nfct_data_desc_t const * p_rx_data);
 
-/** 
+/**
  * @brief Function for transmitting an NFC frame.
  *
  * @param[in] p_tx_data   Pointer to the TX buffer.
@@ -265,7 +265,7 @@ nrfx_err_t nrfx_nfct_tx(nrfx_nfct_data_desc_t const * p_tx_data,
  */
 void nrfx_nfct_state_force(nrfx_nfct_state_t state);
 
-/** 
+/**
  * @brief Function for moving the NFCT to a new initial substate within @ref NRFX_NFCT_STATE_ACTIVATED.
  *
  * @param[in] sub_state  The required substate.
@@ -284,7 +284,7 @@ void nrfx_nfct_init_substate_force(nrfx_nfct_active_state_t sub_state);
  */
 nrfx_err_t nrfx_nfct_parameter_set(nrfx_nfct_param_t const * p_param);
 
-/** 
+/**
  * @brief Function for getting default bytes for NFCID1.
  *
  * @param[in,out] p_nfcid1_buff    In:  empty buffer for data;
@@ -301,7 +301,7 @@ nrfx_err_t nrfx_nfct_parameter_set(nrfx_nfct_param_t const * p_param);
 nrfx_err_t nrfx_nfct_nfcid1_default_bytes_get(uint8_t * const p_nfcid1_buff,
                                               uint32_t        nfcid1_buff_len);
 
-/** 
+/**
  * @brief Function for enabling the automatic collision resolution.
  *
  * @details As defined by the NFC Forum Digital Protocol Technical Specification (and ISO 14443-3),
@@ -310,7 +310,7 @@ nrfx_err_t nrfx_nfct_nfcid1_default_bytes_get(uint8_t * const p_nfcid1_buff,
  */
 void nrfx_nfct_autocolres_enable(void);
 
-/** 
+/**
  * @brief Function for disabling the automatic collision resolution.
  *
  * @details See also details in @ref nrfx_nfct_autocolres_enable.
@@ -338,7 +338,7 @@ void nrfx_nfct_irq_handler(void);
  * - 79. NFCT: A false EVENTS_FIELDDETECTED event occurs after the field is lost.
  * - 116. NFCT does not release HFCLK when switching from ACTIVATED to SENSE mode.
  * To implement the first workaround, an instance of NRF_TIMER is used. After the NFC field is detected,
- * the timing module periodically polls its state to determine when the field is turned off. 
+ * the timing module periodically polls its state to determine when the field is turned off.
  * To implement the second workaround, power reset is used to release the clock acquired by NFCT
  * after the field is turned off. Note that the NFCT register configuration is restored to defaults.
  *
@@ -358,7 +358,7 @@ void nrfx_nfct_irq_handler(void);
  * The application of the implemented workarounds for the nRF52840 chip is determined at runtime and depends
  * on the chip variant.
  *
- * The current code contains a patch for the anomaly 25 (NFCT: Reset value of 
+ * The current code contains a patch for the anomaly 25 (NFCT: Reset value of
  * SENSRES register is incorrect), so that the module now works on Windows Phone.
  * @}
  */

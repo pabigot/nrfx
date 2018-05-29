@@ -72,7 +72,7 @@ void SystemInit(void)
         NRF_CLOCK->EVENTS_CTTO = 0;
         NRF_CLOCK->CTIV = 0;
     }
-    
+
     /* Workaround for Errata 66 "TEMP: Linearity specification not met with default settings" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_66()){
@@ -115,7 +115,7 @@ void SystemInit(void)
     if (errata_108()){
         *(volatile uint32_t *)0x40000EE4 = *(volatile uint32_t *)0x10000258 & 0x0000004F;
     }
-    
+
     /* Workaround for Errata 136 "System: Bits in RESETREAS are set when they should not be" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_136()){
@@ -123,7 +123,7 @@ void SystemInit(void)
             NRF_POWER->RESETREAS =  ~POWER_RESETREAS_RESETPIN_Msk;
         }
     }
-    
+
     /* Configure GPIO pads as pPin Reset pin if Pin Reset capabilities desired. If CONFIG_GPIO_AS_PINRESET is not
       defined, pin reset will not be available. One GPIO (see Product Specification to see which one) will then be
       reserved for PinReset and not available as normal GPIO. */

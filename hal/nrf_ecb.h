@@ -284,4 +284,3 @@ __STATIC_INLINE void * nrf_ecb_data_pointer_get(NRF_ECB_Type const * p_reg)
 #endif
 
 #endif  // NRF_ECB_H__
-

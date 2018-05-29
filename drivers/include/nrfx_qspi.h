@@ -117,8 +117,8 @@ typedef void (*nrfx_qspi_handler_t)(nrfx_qspi_evt_t event, void * p_context);
 /**
  * @brief Function for initializing the QSPI driver instance.
  *
- * This function configures the peripheral and its interrupts and activates it. During the 
- * activation process, the internal clocks are started and the QSPI peripheral tries to read 
+ * This function configures the peripheral and its interrupts and activates it. During the
+ * activation process, the internal clocks are started and the QSPI peripheral tries to read
  * the status byte to read the busy bit. Reading the status byte is done in a simple poll and wait
  * mechanism.
  * If the busy bit is 1, this indicates issues with the external memory device. As a result,

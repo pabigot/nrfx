@@ -48,4 +48,3 @@ POSSIBILITY OF SUCH DAMAGE.
 
 /* Define size of heap. Size must be multiple of 4. */
 #define __STARTUP_CONFIG_HEAP_SIZE   0x1000
-

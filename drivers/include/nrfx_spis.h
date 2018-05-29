@@ -242,4 +242,3 @@ void nrfx_spis_3_irq_handler(void);
 #endif
 
 #endif // NRFX_SPIS_H__
-

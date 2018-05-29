@@ -55,7 +55,7 @@
 
   .section .init, "ax"
   .align 0
-  
+
 /************************************************************************************
  * Default Exception Handlers                                                       *
  ************************************************************************************/
@@ -94,7 +94,7 @@ Dummy_Handler:
 /************************************************************************************
  * Default Interrupt Handlers                                                       *
  ************************************************************************************/
- 
+
 .weak POWER_CLOCK_IRQHandler
 .thumb_set POWER_CLOCK_IRQHandler, Dummy_Handler
 
@@ -183,7 +183,7 @@ Dummy_Handler:
   .thumb_func
 nRFInitialize:
   MOVS    R1, #NRF_POWER_RAMONx_RAMxON_ONMODE_Msk
-  
+
   LDR     R0, =NRF_POWER_RAMON_ADDRESS
   LDR     R2, [R0]
   ORRS    R2, R1
@@ -194,8 +194,8 @@ nRFInitialize:
   ORRS    R2, R1
   STR     R2, [R0]
   bx lr
- 
- 
+
+
 /************************************************************************************
  * Vector Table                                                                     *
  ************************************************************************************/

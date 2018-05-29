@@ -180,7 +180,7 @@ uint32_t nrfx_atomic_u32_add(nrfx_atomic_u32_t * p_data, uint32_t value);
 uint32_t nrfx_atomic_u32_fetch_sub(nrfx_atomic_u32_t * p_data, uint32_t value);
 
 /**
- * @brief Function for running an arithmetic SUB operation on an atomic object 
+ * @brief Function for running an arithmetic SUB operation on an atomic object
  *        and returning its new value.
  *
  * @param[in] p_data    Atomic memory pointer.
@@ -211,7 +211,7 @@ bool nrfx_atomic_u32_cmp_exch(nrfx_atomic_u32_t * p_data,
 /**
  * @brief Function for running an arithmetic SUB operation on an atomic object
  *        if object >= value, and returning its previous value.
- *        
+ *
  * @param[in] p_data    Atomic memory pointer.
  * @param[in] value     Value of the second operand in the SUB operation.
  *
@@ -220,7 +220,7 @@ bool nrfx_atomic_u32_cmp_exch(nrfx_atomic_u32_t * p_data,
 uint32_t nrfx_atomic_u32_fetch_sub_hs(nrfx_atomic_u32_t * p_data, uint32_t value);
 
 /**
- * @brief Function for running an arithmetic SUB operation on an atomic object 
+ * @brief Function for running an arithmetic SUB operation on an atomic object
  *        if object >= value, and returning its new value.
  *
  * @param[in] p_data    Atomic memory pointer.
@@ -231,7 +231,7 @@ uint32_t nrfx_atomic_u32_fetch_sub_hs(nrfx_atomic_u32_t * p_data, uint32_t value
 uint32_t nrfx_atomic_u32_sub_hs(nrfx_atomic_u32_t * p_data, uint32_t value);
 
 /**
- * @brief Function for running a logical one bit flag set operation 
+ * @brief Function for running a logical one bit flag set operation
  *        on an atomic object and returning its previous value.
  *
  * @param[in] p_data    Atomic flag memory pointer.
@@ -241,7 +241,7 @@ uint32_t nrfx_atomic_u32_sub_hs(nrfx_atomic_u32_t * p_data, uint32_t value);
 uint32_t nrfx_atomic_flag_set_fetch(nrfx_atomic_flag_t * p_data);
 
 /**
- * @brief Function for running a logical one bit flag set operation 
+ * @brief Function for running a logical one bit flag set operation
  *        on an atomic object and returning its new value.
  *
  * @param[in] p_data    Atomic flag memory pointer.
@@ -251,7 +251,7 @@ uint32_t nrfx_atomic_flag_set_fetch(nrfx_atomic_flag_t * p_data);
 uint32_t nrfx_atomic_flag_set(nrfx_atomic_flag_t * p_data);
 
 /**
- * @brief Function for running a logical one bit flag clear operation 
+ * @brief Function for running a logical one bit flag clear operation
  *        on an atomic object and returning its previous value.
  *
  * @param[in] p_data    Atomic flag memory pointer.
@@ -261,7 +261,7 @@ uint32_t nrfx_atomic_flag_set(nrfx_atomic_flag_t * p_data);
 uint32_t nrfx_atomic_flag_clear_fetch(nrfx_atomic_flag_t * p_data);
 
 /**
- * @brief Function for running a logical one bit flag clear operation 
+ * @brief Function for running a logical one bit flag clear operation
  *        on an atomic object and returning its new value.
  *
  * @param[in] p_data    Atomic flag memory pointer.

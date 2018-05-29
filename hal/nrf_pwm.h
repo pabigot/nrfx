@@ -758,4 +758,3 @@ __STATIC_INLINE void nrf_pwm_loop_set(NRF_PWM_Type * p_reg,
 #endif
 
 #endif // NRF_PWM_H__
-

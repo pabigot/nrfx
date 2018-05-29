@@ -1001,7 +1001,7 @@ __STATIC_INLINE bool nrf_nfct_autocolres_is_enabled(void)
 
 __STATIC_INLINE void nrf_nfct_autocolres_enable(void)
 {
-    NRF_NFCT->AUTOCOLRESCONFIG = 
+    NRF_NFCT->AUTOCOLRESCONFIG =
         (NRF_NFCT->AUTOCOLRESCONFIG & ~NFCT_AUTOCOLRESCONFIG_MODE_Msk) |
         (NFCT_AUTOCOLRESCONFIG_MODE_Enabled << NFCT_AUTOCOLRESCONFIG_MODE_Pos);
 }

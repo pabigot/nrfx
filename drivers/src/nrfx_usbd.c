@@ -1199,7 +1199,7 @@ static void ev_setup_handler(void)
     }
 
     m_last_setup_dir =
-        ((bmRequestType & USBD_BMREQUESTTYPE_DIRECTION_Msk) == 
+        ((bmRequestType & USBD_BMREQUESTTYPE_DIRECTION_Msk) ==
          (USBD_BMREQUESTTYPE_DIRECTION_HostToDevice << USBD_BMREQUESTTYPE_DIRECTION_Pos)) ?
         NRFX_USBD_EPOUT0 : NRFX_USBD_EPIN0;
 
@@ -1725,7 +1725,7 @@ void nrfx_usbd_enable(void)
         }
         NRFX_CRITICAL_SECTION_EXIT();
     }
-    
+
     if (nrfx_usbd_errata_171())
     {
         NRFX_CRITICAL_SECTION_ENTER();
@@ -1750,7 +1750,7 @@ void nrfx_usbd_enable(void)
         /* Empty loop */
     }
     nrf_usbd_eventcause_clear(NRF_USBD_EVENTCAUSE_READY_MASK);
-    
+
     if (nrfx_usbd_errata_171())
     {
         NRFX_CRITICAL_SECTION_ENTER();

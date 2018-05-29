@@ -82,7 +82,7 @@
   .syntax unified
 
   .global Reset_Handler
-#ifdef INITIALIZE_USER_SECTIONS  
+#ifdef INITIALIZE_USER_SECTIONS
   .global InitializeUserMemorySections
 #endif
   .extern _vectors
@@ -103,7 +103,7 @@ Reset_Handler:
   /* Perform prestart tasks. */
   ldr r0, =nRFInitialize
   blx r0
-  
+
 #ifndef NO_STACK_INIT
   /* Initialise main stack */
   ldr r0, =STACK_INIT_VAL
@@ -163,7 +163,7 @@ Reset_Handler:
   /* Jump to program start */
   b _start
 
-#ifdef INITIALIZE_USER_SECTIONS  
+#ifdef INITIALIZE_USER_SECTIONS
   .thumb_func
 InitializeUserMemorySections:
   ldr r0, =__start_nrf_sections

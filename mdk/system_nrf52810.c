@@ -71,7 +71,7 @@ void SystemInit(void)
         NRF_CLOCK->TRACECONFIG |= CLOCK_TRACECONFIG_TRACEMUX_Serial << CLOCK_TRACECONFIG_TRACEMUX_Pos;
         NRF_P0->PIN_CNF[18] = (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos);
     #endif
-    
+
     /* Enable Trace functionality. If ENABLE_TRACE is not defined, TRACE pins will be used as GPIOs (see Product
        Specification to see which ones). Only available if the developing environment is an nRF52832 device. */
     #if defined (DEVELOP_IN_NRF52832) && defined (ENABLE_TRACE)
@@ -83,7 +83,7 @@ void SystemInit(void)
         NRF_P0->PIN_CNF[18] = (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos);
         NRF_P0->PIN_CNF[20] = (GPIO_PIN_CNF_DRIVE_H0H1 << GPIO_PIN_CNF_DRIVE_Pos) | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos) | (GPIO_PIN_CNF_DIR_Output << GPIO_PIN_CNF_DIR_Pos);
     #endif
-    
+
     #if defined (DEVELOP_IN_NRF52832)
     /* Workaround for Errata 12 "COMP: Reference ladder not correctly calibrated" found at the Errata document
        for nRF52832 device located at https://www.nordicsemi.com/DocLib */
@@ -91,7 +91,7 @@ void SystemInit(void)
         *(volatile uint32_t *)0x40013540 = (*(uint32_t *)0x10000324 & 0x00001F00) >> 8;
     }
     #endif
-    
+
     #if defined (DEVELOP_IN_NRF52832)
     /* Workaround for Errata 16 "System: RAM may be corrupt on wakeup from CPU IDLE" found at the Errata document
        for nRF52832 device located at https://www.nordicsemi.com/DocLib */
@@ -99,7 +99,7 @@ void SystemInit(void)
         *(volatile uint32_t *)0x4007C074 = 3131961357ul;
     }
     #endif
-    
+
     /* Workaround for Errata 31 "CLOCK: Calibration values are not correctly loaded from FICR at reset" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib */
     if (errata_31()){
@@ -113,7 +113,7 @@ void SystemInit(void)
         CoreDebug->DEMCR &= ~CoreDebug_DEMCR_TRCENA_Msk;
     }
     #endif
-    
+
     /* Workaround for Errata 36 "CLOCK: Some registers are not reset when expected" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_36()){
@@ -121,7 +121,7 @@ void SystemInit(void)
         NRF_CLOCK->EVENTS_CTTO = 0;
         NRF_CLOCK->CTIV = 0;
     }
-    
+
     #if defined (DEVELOP_IN_NRF52832)
     /* Workaround for Errata 37 "RADIO: Encryption engine is slow by default" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
@@ -140,7 +140,7 @@ void SystemInit(void)
         *(volatile uint32_t *)0x40005614 = 0x0000003F;
     }
     #endif
-    
+
     /* Workaround for Errata 66 "TEMP: Linearity specification not met with default settings" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_66()){
@@ -162,7 +162,7 @@ void SystemInit(void)
         NRF_TEMP->T3 = NRF_FICR->TEMP.T3;
         NRF_TEMP->T4 = NRF_FICR->TEMP.T4;
     }
-    
+
     /* Workaround for Errata 103 "CCM: Wrong reset value of CCM MAXPACKETSIZE" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_103()){
@@ -174,7 +174,7 @@ void SystemInit(void)
     if (errata_108()){
         *(volatile uint32_t *)0x40000EE4 = *(volatile uint32_t *)0x10000258 & 0x0000004F;
     }
-    
+
     /* Workaround for Errata 136 "System: Bits in RESETREAS are set when they should not be" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */
     if (errata_136()){
@@ -182,7 +182,7 @@ void SystemInit(void)
             NRF_POWER->RESETREAS =  ~POWER_RESETREAS_RESETPIN_Msk;
         }
     }
-    
+
     #if defined (DEVELOP_IN_NRF52832)
     /* Workaround for Errata 182 "RADIO: Fixes for anomalies #102, #106, and #107 do not take effect" found at the Errata document
        for your device located at https://www.nordicsemi.com/DocLib  */

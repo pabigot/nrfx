@@ -58,7 +58,7 @@ POSSIBILITY OF SUCH DAMAGE.
     #endif
 
     #define GET_SP()                __current_sp()
-    
+
 #elif defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
 
     #ifndef __ASM
@@ -105,7 +105,7 @@ POSSIBILITY OF SUCH DAMAGE.
     #ifndef __PACKED
         #define __PACKED            __packed
     #endif
-    
+
     #define GET_SP()                __get_SP()
 
 #elif defined   ( __GNUC__ )
@@ -127,7 +127,7 @@ POSSIBILITY OF SUCH DAMAGE.
     #endif
 
     #ifndef __PACKED
-        #define __PACKED           __attribute__((packed)) 
+        #define __PACKED           __attribute__((packed))
     #endif
 
     #define GET_SP()                gcc_current_sp()
@@ -155,7 +155,7 @@ POSSIBILITY OF SUCH DAMAGE.
     #ifndef __ALIGN
         #define __ALIGN(n)          __align(n)
     #endif
-    
+
     /* Not defined for TASKING. */
     #ifndef __PACKED
         #define __PACKED

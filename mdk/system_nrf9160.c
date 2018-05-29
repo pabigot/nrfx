@@ -20,7 +20,7 @@ NOTICE: This file has been modified by Nordic Semiconductor ASA.
 
 */
 
-/* NOTE: Template files (including this one) are application specific and therefore expected to 
+/* NOTE: Template files (including this one) are application specific and therefore expected to
    be copied into the application project folder prior to its use! */
 
 #include <stdint.h>
@@ -46,7 +46,7 @@ NOTICE: This file has been modified by Nordic Semiconductor ASA.
 #define TRACE_TRACEDATA3_PIN (25)
 
 #if defined ( __CC_ARM )
-    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK;  
+    uint32_t SystemCoreClock __attribute__((used)) = __SYSTEM_CLOCK;
 #elif defined ( __ICCARM__ )
     __root uint32_t SystemCoreClock = __SYSTEM_CLOCK;
 #elif defined ( __GNUC__ )
@@ -79,7 +79,7 @@ void SystemInit(void)
           SAU->CTRL |= (1 << SAU_CTRL_ALLNS_Pos);
         #endif
 
-        /* Trimming of the device. Copy all the trimming values from FICR into the target addresses. Trim 
+        /* Trimming of the device. Copy all the trimming values from FICR into the target addresses. Trim
          until one ADDR is not initialized. */
         uint32_t index = 0;
         for (index = 0; index < 256ul && NRF_FICR_S->TRIMCNF[index].ADDR != 0xFFFFFFFFul; index++){
@@ -91,36 +91,36 @@ void SystemInit(void)
               #pragma diag_default=Pa082
           #endif
         }
-          
+
         /* Set UICR->HFXOSRC and UICR->HFXOCNT to working defaults if UICR was erased */
         if (uicr_HFXOSRC_erased() || uicr_HFXOCNT_erased()) {
           /* Wait for pending NVMC operations to finish */
           while (NRF_NVMC_S->READY != NVMC_READY_READY_Ready);
-          
+
           /* Enable write mode in NVMC */
           NRF_NVMC_S->CONFIG = NVMC_CONFIG_WEN_Wen;
           while (NRF_NVMC_S->READY != NVMC_READY_READY_Ready);
-          
+
           if (uicr_HFXOSRC_erased()){
             /* Write default value to UICR->HFXOSRC */
             NRF_UICR_S->HFXOSRC = (NRF_UICR_S->HFXOSRC & ~UICR_HFXOSRC_HFXOSRC_Msk) | UICR_HFXOSRC_HFXOSRC_TCXO;
             while (NRF_NVMC_S->READY != NVMC_READY_READY_Ready);
           }
-          
+
           if (uicr_HFXOCNT_erased()){
             /* Write default value to UICR->HFXOCNT */
             NRF_UICR_S->HFXOCNT = (NRF_UICR_S->HFXOCNT & ~UICR_HFXOCNT_HFXOCNT_Msk) | 0x20;
             while (NRF_NVMC_S->READY != NVMC_READY_READY_Ready);
           }
-                
+
           /* Enable read mode in NVMC */
           NRF_NVMC_S->CONFIG = NVMC_CONFIG_WEN_Ren;
           while (NRF_NVMC_S->READY != NVMC_READY_READY_Ready);
-          
+
           /* Reset to apply clock select update */
           NVIC_SystemReset();
         }
-        
+
         /* Workaround for Errata 6 "POWER: SLEEPENTER and SLEEPEXIT events asserted after pin reset" found at the Errata document
             for your device located at https://www.nordicsemi.com/DocLib  */
         if (errata_6()){
@@ -179,11 +179,11 @@ void SystemInit(void)
 
         #endif
 
-        /* Allow Non-Secure code to run FPU instructions. 
+        /* Allow Non-Secure code to run FPU instructions.
          * If only the secure code should control FPU power state these registers should be configured accordingly in the secure application code. */
         SCB->NSACR |= (3UL << 10);
     #endif
-    
+
     /* Enable the FPU if the compiler used floating point unit instructions. __FPU_USED is a MACRO defined by the
     * compiler. Since the FPU consumes energy, remember to disable FPU use in the compiler if floating point unit
     * operations are not used in your code. */
@@ -192,7 +192,7 @@ void SystemInit(void)
       __DSB();
       __ISB();
     #endif
-    
+
     SystemCoreClockUpdate();
 }
 
@@ -206,8 +206,8 @@ void SystemInit(void)
         }
         return false;
     }
-    
-    
+
+
     bool uicr_HFXOSRC_erased()
     {
         if ((NRF_UICR_S->HFXOSRC & UICR_HFXOSRC_HFXOSRC_Msk) != UICR_HFXOSRC_HFXOSRC_TCXO) {
@@ -215,7 +215,7 @@ void SystemInit(void)
         }
         return false;
     }
-    
+
 
     bool errata_6()
     {
@@ -227,11 +227,11 @@ void SystemInit(void)
                 return true;
             }
         }
-        
+
         return false;
     }
 
-    
+
     bool errata_14()
     {
         if (*(uint32_t *)0x00FF0130 == 0x9ul){

@@ -119,7 +119,7 @@ extern "C" {
 
 /**@brief Macro for performing integer division, making sure the result is rounded up.
  *
- * @details A typical use case for this macro is to compute the number of objects 
+ * @details A typical use case for this macro is to compute the number of objects
  *          with size @c b required to hold @c a number of bytes.
  *
  * @param a  Numerator.

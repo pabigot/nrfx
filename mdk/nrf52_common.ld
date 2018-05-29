@@ -1,5 +1,5 @@
 /* Deprecated linker script for Nordic Semiconductor nRF52 devices,
- * please use nrfx_common.ld. This version exists for backwards 
+ * please use nrfx_common.ld. This version exists for backwards
  * compatibility.
  *
  * Version: Sourcery G++ 4.5-1
@@ -160,11 +160,11 @@ SECTIONS
 
     /* Check if data + heap + stack exceeds RAM limit */
     ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
-    
+
     /* Check if text sections + data exceeds FLASH limit */
     DataInitFlashUsed = __bss_start__ - __data_start__;
     CodeFlashUsed = __etext - ORIGIN(FLASH);
     TotalFlashUsed = CodeFlashUsed + DataInitFlashUsed;
     ASSERT(TotalFlashUsed <= LENGTH(FLASH), "region FLASH overflowed with .data and user data")
-    
+
 }

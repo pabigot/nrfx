@@ -157,4 +157,3 @@ void nrfx_wdt_irq_handler(void);
 #endif
 
 #endif
-

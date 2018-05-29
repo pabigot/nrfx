@@ -4,7 +4,7 @@
  * @{
  * @ingroup nrfx_twim
  */
-/** @brief 
+/** @brief
  *
  *  Set to 1 to activate.
  *
@@ -120,7 +120,7 @@
 /** @brief Enables nRF52 anomaly 109 workaround for TWIM.
  *
  * The workaround uses interrupts to wake up the CPU by catching
- * the start event of zero-frequency transmission, clear the 
+ * the start event of zero-frequency transmission, clear the
  * peripheral, set desired frequency, start the peripheral, and
  * the proper transmission. See more in the Errata document or
  * Anomaly 109 Addendum located at https://infocenter.nordicsemi.com/
