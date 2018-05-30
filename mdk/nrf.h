@@ -71,29 +71,19 @@ POSSIBILITY OF SUCH DAMAGE.
     #if defined (NRF51)
         #include "nrf51.h"
         #include "nrf51_bitfields.h"
-        #include "nrf51_deprecated.h"
 
     #elif defined (NRF52810_XXAA)
         #include "nrf52810.h"
         #include "nrf52810_bitfields.h"
-        #include "nrf51_to_nrf52810.h"
-        #include "nrf52_to_nrf52810.h"
     #elif defined (NRF52811_XXAA)
         #include "nrf52811.h"
         #include "nrf52811_bitfields.h"
-        #include "nrf51_to_nrf52810.h"
-        #include "nrf52_to_nrf52810.h"
-        #include "nrf52810_to_nrf52811.h"
     #elif defined (NRF52832_XXAA) || defined (NRF52832_XXAB)
         #include "nrf52.h"
         #include "nrf52_bitfields.h"
-        #include "nrf51_to_nrf52.h"
-        #include "nrf52_name_change.h"
     #elif defined (NRF52840_XXAA)
         #include "nrf52840.h"
         #include "nrf52840_bitfields.h"
-        #include "nrf51_to_nrf52840.h"
-        #include "nrf52_to_nrf52840.h"
 
     #elif defined (NRF9160_XXAA)
         #include "nrf9160.h"
