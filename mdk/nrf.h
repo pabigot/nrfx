@@ -121,47 +121,28 @@ POSSIBILITY OF SUCH DAMAGE.
 #if defined (NRF51)
     #include "nrf51.h"
     #include "nrf51_bitfields.h"
-    #include "nrf51_deprecated.h"
 
 #elif defined (NRF52805_XXAA)
     #include "nrf52805.h"
     #include "nrf52805_bitfields.h"
-    #include "nrf51_to_nrf52810.h"
-    #include "nrf52_to_nrf52810.h"
-    #include "nrf52810_to_nrf52811.h"
 #elif defined (NRF52810_XXAA)
     #include "nrf52810.h"
     #include "nrf52810_bitfields.h"
-    #include "nrf51_to_nrf52810.h"
-    #include "nrf52_to_nrf52810.h"
-    #include "nrf52810_name_change.h"
 #elif defined (NRF52811_XXAA)
     #include "nrf52811.h"
     #include "nrf52811_bitfields.h"
-    #include "nrf51_to_nrf52810.h"
-    #include "nrf52_to_nrf52810.h"
-    #include "nrf52810_to_nrf52811.h"
 #elif defined (NRF52820_XXAA)
     #include "nrf52820.h"
     #include "nrf52820_bitfields.h"
-    #include "nrf51_to_nrf52.h"
-    #include "nrf52_to_nrf52833.h"
-    #include "nrf52833_to_nrf52820.h"
 #elif defined (NRF52832_XXAA) || defined (NRF52832_XXAB)
     #include "nrf52.h"
     #include "nrf52_bitfields.h"
-    #include "nrf51_to_nrf52.h"
-    #include "nrf52_name_change.h"
 #elif defined (NRF52833_XXAA)
     #include "nrf52833.h"
     #include "nrf52833_bitfields.h"
-    #include "nrf52_to_nrf52833.h"
-    #include "nrf51_to_nrf52.h"
 #elif defined (NRF52840_XXAA)
     #include "nrf52840.h"
     #include "nrf52840_bitfields.h"
-    #include "nrf51_to_nrf52840.h"
-    #include "nrf52_to_nrf52840.h"
 
 #elif defined (NRF5340_XXAA)
     #if defined(NRF_APPLICATION)
@@ -175,7 +156,6 @@ POSSIBILITY OF SUCH DAMAGE.
 #elif defined (NRF9160_XXAA)
     #include "nrf9160.h"
     #include "nrf9160_bitfields.h"
-    #include "nrf9160_name_change.h"
 
 #else
     #error "Device must be defined. See nrf.h."
