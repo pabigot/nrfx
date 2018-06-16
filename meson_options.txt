@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright 2018 Peter A. Bigot
+
+option('device',
+       type: 'string',
+       description: 'nRF5 device identifier: NRF51, NRF52832_XXAA, ...')
