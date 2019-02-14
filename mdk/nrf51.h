@@ -186,6 +186,38 @@ typedef struct {
   __IOM uint32_t  TEP;                          /*!< (@ 0x00000004) Channel task end-point.                                    */
 } PPI_CH_Type;                                  /*!< Size = 8 (0x8)                                                            */
 
+/* pabigot Backport nRF52840 PSEL legacy device structure to nRF51 */
+
+typedef struct {
+  __IOM uint32_t  RTS;                          /*!< (@ 0x00000000) Pin select for RTS                                         */
+  __IOM uint32_t  TXD;                          /*!< (@ 0x00000004) Pin select for TXD                                         */
+  __IOM uint32_t  CTS;                          /*!< (@ 0x00000008) Pin select for CTS                                         */
+  __IOM uint32_t  RXD;                          /*!< (@ 0x0000000C) Pin select for RXD                                         */
+} UART_PSEL_Type;                               /*!< Size = 16 (0x10)                                                          */
+
+typedef struct {
+  __IOM uint32_t  SCK;                          /*!< (@ 0x00000000) Pin select for SCK                                         */
+  __IOM uint32_t  MOSI;                         /*!< (@ 0x00000004) Pin select for MOSI signal                                 */
+  __IOM uint32_t  MISO;                         /*!< (@ 0x00000008) Pin select for MISO signal                                 */
+} SPI_PSEL_Type;                                /*!< Size = 12 (0xc)                                                           */
+
+typedef struct {
+  __IOM uint32_t  SCL;                          /*!< (@ 0x00000000) Pin select for SCL                                         */
+  __IOM uint32_t  SDA;                          /*!< (@ 0x00000004) Pin select for SDA                                         */
+} TWI_PSEL_Type;                                /*!< Size = 8 (0x8)                                                            */
+
+typedef struct {
+  __IOM uint32_t  SCK;                          /*!< (@ 0x00000000) Pin select for SCK                                         */
+  __IOM uint32_t  MISO;                         /*!< (@ 0x00000004) Pin select for MISO signal                                 */
+  __IOM uint32_t  MOSI;                         /*!< (@ 0x00000008) Pin select for MOSI signal                                 */
+  __IOM uint32_t  CSN;                          /*!< (@ 0x0000000C) Pin select for CSN signal                                  */
+} SPIS_PSEL_Type;                               /*!< Size = 16 (0x10)                                                          */
+
+typedef struct {
+  __IOM uint32_t  LED;                          /*!< (@ 0x00000000) Pin select for LED signal                                  */
+  __IOM uint32_t  A;                            /*!< (@ 0x00000004) Pin select for A signal                                    */
+  __IOM uint32_t  B;                            /*!< (@ 0x00000008) Pin select for B signal                                    */
+} QDEC_PSEL_Type;                               /*!< Size = 12 (0xc)                                                           */
 
 /** @} */ /* End of group Device_Peripheral_clusters */
 
@@ -436,10 +468,11 @@ typedef struct {                                /*!< (@ 0x40002000) UART0 Struct
   __IM  uint32_t  RESERVED8[31];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable UART and acquire IOs.                               */
   __IM  uint32_t  RESERVED9;
-  __IOM uint32_t  PSELRTS;                      /*!< (@ 0x00000508) Pin select for RTS.                                        */
-  __IOM uint32_t  PSELTXD;                      /*!< (@ 0x0000050C) Pin select for TXD.                                        */
-  __IOM uint32_t  PSELCTS;                      /*!< (@ 0x00000510) Pin select for CTS.                                        */
-  __IOM uint32_t  PSELRXD;                      /*!< (@ 0x00000514) Pin select for RXD.                                        */
+  __IOM UART_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELRTS;                      /*!< (@ 0x00000508) Pin select for RTS.                                        */
+  //  __IOM uint32_t  PSELTXD;                      /*!< (@ 0x0000050C) Pin select for TXD.                                        */
+  //  __IOM uint32_t  PSELCTS;                      /*!< (@ 0x00000510) Pin select for CTS.                                        */
+  //  __IOM uint32_t  PSELRXD;                      /*!< (@ 0x00000514) Pin select for RXD.                                        */
   __IM  uint32_t  RXD;                          /*!< (@ 0x00000518) RXD register. On read action the buffer pointer
                                                                     is displaced. Once read the character is
                                                                     consumed. If read when no character available,
@@ -474,9 +507,10 @@ typedef struct {                                /*!< (@ 0x40003000) SPI0 Structu
   __IM  uint32_t  RESERVED2[125];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable SPI.                                                */
   __IM  uint32_t  RESERVED3;
-  __IOM uint32_t  PSELSCK;                      /*!< (@ 0x00000508) Pin select for SCK.                                        */
-  __IOM uint32_t  PSELMOSI;                     /*!< (@ 0x0000050C) Pin select for MOSI.                                       */
-  __IOM uint32_t  PSELMISO;                     /*!< (@ 0x00000510) Pin select for MISO.                                       */
+  __IOM SPI_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELSCK;                      /*!< (@ 0x00000508) Pin select for SCK.                                        */
+  //  __IOM uint32_t  PSELMOSI;                     /*!< (@ 0x0000050C) Pin select for MOSI.                                       */
+  //  __IOM uint32_t  PSELMISO;                     /*!< (@ 0x00000510) Pin select for MISO.                                       */
   __IM  uint32_t  RESERVED4;
   __IM  uint32_t  RXD;                          /*!< (@ 0x00000518) RX data.                                                   */
   __IOM uint32_t  TXD;                          /*!< (@ 0x0000051C) TX data.                                                   */
@@ -530,8 +564,9 @@ typedef struct {                                /*!< (@ 0x40003000) TWI0 Structu
   __IM  uint32_t  RESERVED11[14];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable two-wire master.                                    */
   __IM  uint32_t  RESERVED12;
-  __IOM uint32_t  PSELSCL;                      /*!< (@ 0x00000508) Pin select for SCL.                                        */
-  __IOM uint32_t  PSELSDA;                      /*!< (@ 0x0000050C) Pin select for SDA.                                        */
+  __IOM TWI_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELSCL;                      /*!< (@ 0x00000508) Pin select for SCL.                                        */
+  //  __IOM uint32_t  PSELSDA;                      /*!< (@ 0x0000050C) Pin select for SDA.                                        */
   __IM  uint32_t  RESERVED13[2];
   __IM  uint32_t  RXD;                          /*!< (@ 0x00000518) RX data register.                                          */
   __IOM uint32_t  TXD;                          /*!< (@ 0x0000051C) TX data register.                                          */
@@ -576,10 +611,11 @@ typedef struct {                                /*!< (@ 0x40004000) SPIS1 Struct
   __IM  uint32_t  RESERVED8[47];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable SPIS.                                               */
   __IM  uint32_t  RESERVED9;
-  __IOM uint32_t  PSELSCK;                      /*!< (@ 0x00000508) Pin select for SCK.                                        */
-  __IOM uint32_t  PSELMISO;                     /*!< (@ 0x0000050C) Pin select for MISO.                                       */
-  __IOM uint32_t  PSELMOSI;                     /*!< (@ 0x00000510) Pin select for MOSI.                                       */
-  __IOM uint32_t  PSELCSN;                      /*!< (@ 0x00000514) Pin select for CSN.                                        */
+  __IOM SPIS_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELSCK;                      /*!< (@ 0x00000508) Pin select for SCK.                                        */
+  //  __IOM uint32_t  PSELMISO;                     /*!< (@ 0x0000050C) Pin select for MISO.                                       */
+  //  __IOM uint32_t  PSELMOSI;                     /*!< (@ 0x00000510) Pin select for MOSI.                                       */
+  //  __IOM uint32_t  PSELCSN;                      /*!< (@ 0x00000514) Pin select for CSN.                                        */
   __IM  uint32_t  RESERVED10[7];
   __IOM uint32_t  RXDPTR;                       /*!< (@ 0x00000534) RX data pointer.                                           */
   __IOM uint32_t  MAXRX;                        /*!< (@ 0x00000538) Maximum number of bytes in the receive buffer.             */
@@ -970,9 +1006,10 @@ typedef struct {                                /*!< (@ 0x40012000) QDEC Structu
   __IM  int32_t   ACC;                          /*!< (@ 0x00000514) Accumulated valid transitions register.                    */
   __IM  int32_t   ACCREAD;                      /*!< (@ 0x00000518) Snapshot of ACC register. Value generated by
                                                                     the TASKS_READCLEACC task.                                 */
-  __IOM uint32_t  PSELLED;                      /*!< (@ 0x0000051C) Pin select for LED output.                                 */
-  __IOM uint32_t  PSELA;                        /*!< (@ 0x00000520) Pin select for phase A input.                              */
-  __IOM uint32_t  PSELB;                        /*!< (@ 0x00000524) Pin select for phase B input.                              */
+  __IOM QDEC_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELLED;                      /*!< (@ 0x0000051C) Pin select for LED output.                                 */
+  //  __IOM uint32_t  PSELA;                        /*!< (@ 0x00000520) Pin select for phase A input.                              */
+  //  __IOM uint32_t  PSELB;                        /*!< (@ 0x00000524) Pin select for phase B input.                              */
   __IOM uint32_t  DBFEN;                        /*!< (@ 0x00000528) Enable debouncer input filters.                            */
   __IM  uint32_t  RESERVED4[5];
   __IOM uint32_t  LEDPRE;                       /*!< (@ 0x00000540) Time LED is switched ON before the sample.                 */
