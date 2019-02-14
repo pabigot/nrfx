@@ -682,6 +682,20 @@ typedef struct {
 } I2S_PSEL_Type;                                /*!< Size = 20 (0x14)                                                          */
 
 
+/* pabigot Backport missing nRF52840 PSEL legacy device structure to nRF52 */
+
+typedef struct {
+  __IOM uint32_t  RTS;                          /*!< (@ 0x00000000) Pin select for RTS                                         */
+  __IOM uint32_t  TXD;                          /*!< (@ 0x00000004) Pin select for TXD                                         */
+  __IOM uint32_t  CTS;                          /*!< (@ 0x00000008) Pin select for CTS                                         */
+  __IOM uint32_t  RXD;                          /*!< (@ 0x0000000C) Pin select for RXD                                         */
+} UART_PSEL_Type;                               /*!< Size = 16 (0x10)                                                          */
+
+typedef struct {
+  __IOM uint32_t  SCL;                          /*!< (@ 0x00000000) Pin select for SCL                                         */
+  __IOM uint32_t  SDA;                          /*!< (@ 0x00000004) Pin select for SDA                                         */
+} TWI_PSEL_Type;                                /*!< Size = 8 (0x8)                                                            */
+
 /** @} */ /* End of group Device_Peripheral_clusters */
 
 
@@ -1052,10 +1066,11 @@ typedef struct {                                /*!< (@ 0x40002000) UART0 Struct
   __IM  uint32_t  RESERVED8[31];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable UART                                                */
   __IM  uint32_t  RESERVED9;
-  __IOM uint32_t  PSELRTS;                      /*!< (@ 0x00000508) Pin select for RTS                                         */
-  __IOM uint32_t  PSELTXD;                      /*!< (@ 0x0000050C) Pin select for TXD                                         */
-  __IOM uint32_t  PSELCTS;                      /*!< (@ 0x00000510) Pin select for CTS                                         */
-  __IOM uint32_t  PSELRXD;                      /*!< (@ 0x00000514) Pin select for RXD                                         */
+  __IOM UART_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELRTS;                      /*!< (@ 0x00000508) Pin select for RTS                                         */
+  //  __IOM uint32_t  PSELTXD;                      /*!< (@ 0x0000050C) Pin select for TXD                                         */
+  //  __IOM uint32_t  PSELCTS;                      /*!< (@ 0x00000510) Pin select for CTS                                         */
+  //  __IOM uint32_t  PSELRXD;                      /*!< (@ 0x00000514) Pin select for RXD                                         */
   __IM  uint32_t  RXD;                          /*!< (@ 0x00000518) RXD register                                               */
   __OM  uint32_t  TXD;                          /*!< (@ 0x0000051C) TXD register                                               */
   __IM  uint32_t  RESERVED10;
@@ -1348,8 +1363,9 @@ typedef struct {                                /*!< (@ 0x40003000) TWI0 Structu
   __IM  uint32_t  RESERVED11[14];
   __IOM uint32_t  ENABLE;                       /*!< (@ 0x00000500) Enable TWI                                                 */
   __IM  uint32_t  RESERVED12;
-  __IOM uint32_t  PSELSCL;                      /*!< (@ 0x00000508) Pin select for SCL                                         */
-  __IOM uint32_t  PSELSDA;                      /*!< (@ 0x0000050C) Pin select for SDA                                         */
+  __IOM TWI_PSEL_Type PSEL;
+  //  __IOM uint32_t  PSELSCL;                      /*!< (@ 0x00000508) Pin select for SCL                                         */
+  //  __IOM uint32_t  PSELSDA;                      /*!< (@ 0x0000050C) Pin select for SDA                                         */
   __IM  uint32_t  RESERVED13[2];
   __IM  uint32_t  RXD;                          /*!< (@ 0x00000518) RXD register                                               */
   __IOM uint32_t  TXD;                          /*!< (@ 0x0000051C) TXD register                                               */
