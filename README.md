@@ -1,5 +1,22 @@
 # nrfx
 
+## pabigot modifications
+
+This tree holds an upstream Nordic nrfx release with modifications to
+support nrfcxx:
+
+* cleanup whitespace errors in all source files
+* remove support for outdated peripheral and bitfield names
+* backport PSEL structures to devices that originally used individual
+  PSELfoo fields
+* add meson build support access to the mdk headers
+
+These changes support using nrfx as a subproject in a cross-series
+application environment.
+
+The remainder of this file is the unchanged (modulo whitespace) content
+of the original release.
+
 ## Overview
 
 nrfx is a standalone set of drivers for peripherals present in Nordic
